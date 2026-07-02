@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PIGBAR | When execution breaks</title>
+<meta name="description" content="When execution breaks, founders call PIGBAR.">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  background:#070707;
+  color:#f5f2ea;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{color:inherit;text-decoration:none}
+
+.wrap{
+  max-width:980px;
+  margin:0 auto;
+  padding:0 40px;
+}
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10;
+  background:rgba(7,7,7,.72);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.nav{
+  max-width:1180px;
+  margin:0 auto;
+  padding:22px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  color:#c8a45d;
+  font-size:15px;
+  font-weight:900;
+  letter-spacing:.32em;
+}
+
+.nav a{
+  color:#c8a45d;
+  font-size:14px;
+  font-weight:700;
+}
+
+.screen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:150px 0 120px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.eyebrow{
+  color:#c8a45d;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  margin-bottom:34px;
+}
+
+h1{
+  font-size:86px;
+  line-height:1.02;
+  letter-spacing:-.07em;
+  font-weight:850;
+  max-width:920px;
+}
+
+.big{
+  font-size:58px;
+  line-height:1.16;
+  letter-spacing:-.06em;
+  font-weight:800;
+  max-width:920px;
+}
+
+.mid{
+  font-size:34px;
+  line-height:1.55;
+  letter-spacing:-.045em;
+  max-width:790px;
+  color:#e4e0d7;
+}
+
+.muted{color:#858585}
+.gold{color:#c8a45d}
+
+.stack{
+  display:grid;
+  gap:28px;
+}
+
+.line{
+  font-size:46px;
+  line-height:1.25;
+  letter-spacing:-.055em;
+  font-weight:750;
+}
+
+.oneword{
+  font-size:112px;
+  line-height:.95;
+  letter-spacing:-.08em;
+  font-weight:900;
+  color:#c8a45d;
+}
+
+.problems{
+  display:grid;
+  gap:22px;
+}
+
+.problem{
+  font-size:32px;
+  line-height:1.4;
+  letter-spacing:-.045em;
+  color:#f5f2ea;
+}
+
+.problem span{color:#777}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+  margin-top:50px;
+}
+
+.item{
+  border-top:1px solid #222;
+  padding-top:22px;
+}
+
+.item h3{
+  font-size:18px;
+  margin-bottom:8px;
+}
+
+.item p{
+  color:#777;
+  font-size:13px;
+  line-height:1.55;
+}
+
+.case{
+  border-top:1px solid #222;
+  padding-top:44px;
+  max-width:720px;
+}
+
+.case-line{
+  font-size:48px;
+  line-height:1.2;
+  letter-spacing:-.055em;
+  font-weight:800;
+}
+
+.founder{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:40px;
+  align-items:start;
+}
+
+.name{
+  font-size:30px;
+  font-weight:850;
+  letter-spacing:-.04em;
+}
+
+.role{
+  color:#888;
+  margin-top:8px;
+  font-size:15px;
+}
+
+.cta-box{
+  border-top:1px solid #222;
+  padding-top:50px;
+}
+
+.cta-title{
+  font-size:54px;
+  line-height:1.15;
+  letter-spacing:-.06em;
+  font-weight:850;
+  margin-bottom:34px;
+}
+
+.cta-links a{
+  display:block;
+  color:#c8a45d;
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:14px;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:38px;
+  background:#c8a45d;
+  color:#070707;
+  padding:15px 24px;
+  border-radius:999px;
+  font-weight:900;
+  font-size:15px;
+}
+
+footer{
+  padding:44px 40px;
+  color:#666;
+  font-size:13px;
+  text-align:center;
+}
+
+@media(max-width:768px){
+  .wrap{padding:0 24px}
+  .nav{padding:18px 24px}
+  .screen{padding:120px 0 90px;min-height:auto}
+  h1{font-size:50px}
+  .big{font-size:36px}
+  .mid{font-size:24px}
+  .line{font-size:31px}
+  .oneword{font-size:64px}
+  .problem{font-size:23px}
+  .grid{grid-template-columns:1fr 1fr}
+  .case-line{font-size:33px}
+  .founder{grid-template-columns:1fr}
+  .cta-title{font-size:36px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">PIGBAR</div>
+    <a href="mailto:thezoooz@gmail.com">Contact</a>
+  </div>
+</header>
+
+<main>
+
+<section class="screen">
+  <div class="wrap">
+    <div class="eyebrow">Execution Partner</div>
+    <h1>
+      Your business<br>
+      isn’t broken.
+      <br><span class="muted">Something inside it is.</span>
+    </h1>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap stack">
+    <div class="line">More developers? <span class="muted">No.</span></div>
+    <div class="line">More meetings? <span class="muted">No.</span></div>
+    <div class="line">More strategy? <span class="muted">No.</span></div>
+    <div class="oneword">Execution.</div>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap stack">
+    <div class="big">Products don’t fail.<br><span class="gold">Execution does.</span></div>
+    <div class="big">Teams don’t fail.<br><span class="gold">Alignment does.</span></div>
+    <div class="big">Strategies don’t fail.<br><span class="gold">Ownership does.</span></div>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <div class="eyebrow">PIGBAR</div>
+    <div class="big">
+      We make businesses<br>
+      move again.
+    </div>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <div class="eyebrow">When people call</div>
+
+    <div class="problems">
+      <div class="problem">Development is done. <span>Launch isn’t.</span></div>
+      <div class="problem">People are hired. <span>Nothing moves.</span></div>
+      <div class="problem">Everyone is busy. <span>Nothing changes.</span></div>
+      <div class="problem">The founder decides everything. <span>The company slows down.</span></div>
+      <div class="problem">There is opportunity. <span>There is no structure.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <div class="big">
+      I don’t build software.<br>
+      I don’t sell consulting.<br>
+      I don’t provide developers.
+      <br><br>
+      <span class="gold">I make businesses move.</span>
+    </div>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <div class="eyebrow">Selected Experience</div>
+
+    <div class="big">
+      25+ years building and fixing<br>
+      complex businesses.
+    </div>
+
+    <div class="grid">
+      <div class="item">
+        <h3>Banking</h3>
+        <p>NH · KB · WOORI<br>IBK · KDB · KJ Bank</p>
+      </div>
+
+      <div class="item">
+        <h3>Telecom</h3>
+        <p>SKT · KT · LG U+</p>
+      </div>
+
+      <div class="item">
+        <h3>Platform</h3>
+        <p>Cyworld Reboot<br>IPTV · IoT · Drone</p>
+      </div>
+
+      <div class="item">
+        <h3>Execution</h3>
+        <p>Recovery · Stabilization<br>Business Operations · PMO</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <div class="case">
+      <div class="case-line">80 people.</div>
+      <div class="case-line">3 months left.</div>
+      <div class="case-line muted">Execution stopped.</div>
+      <div class="case-line gold">Execution restarted.</div>
+    </div>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap founder">
+    <div>
+      <div class="name">주영지</div>
+      <div class="role">Founder, PIGBAR</div>
+    </div>
+
+    <div class="mid">
+      복잡한 사업은 대부분 아이디어가 부족해서 멈추지 않습니다.
+      <br><br>
+      사람은 있는데 연결되지 않고,<br>
+      결정은 있는데 실행되지 않고,<br>
+      기회는 있는데 구조가 없어서 멈춥니다.
+      <br><br>
+      PIGBAR는 그 사이를 움직입니다.
+    </div>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <div class="cta-box">
+      <div class="cta-title">
+        Let’s spend<br>
+        30 minutes.
+      </div>
+
+      <div class="mid">
+        No slides.<br>
+        No proposal.<br>
+        Just your business.
+      </div>
+
+      <a class="btn" href="mailto:thezoooz@gmail.com">Talk with Young Ji</a>
+
+      <div class="cta-links" style="margin-top:46px">
+        <a href="mailto:thezoooz@gmail.com">thezoooz@gmail.com</a>
+        <a href="tel:01099820519">010-9982-0519</a>
+        <a href="https://www.linkedin.com/in/youngjiju" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  PIGBAR · When execution breaks, founders call.
+</footer>
+
+</body>
+</html>
